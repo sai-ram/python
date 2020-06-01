@@ -16,12 +16,13 @@ def covid_trend(county, state, days):
 	all_county_state['New'] = (all_county_state["Cases"]-all_county_state["Cases"].shift()).fillna(0)
 	return(all_county_state.tail(days))
 
-# print("Shelby County, Tennessee")
-# print(covid_trend('Shelby','Tennessee',60))
-# print("\nAllegheny, Pennsylvania")
-# print(covid_trend('Allegheny','Pennsylvania',10))
-# print("\nMonongalia, West Virginia")
-# print(covid_trend('Monongalia','West Virginia',10))
+def test_examples():
+	print("Shelby County, Tennessee")
+	print(covid_trend('Shelby','Tennessee',60))
+	print("\nAllegheny, Pennsylvania")
+	print(covid_trend('Allegheny','Pennsylvania',10))
+	print("\nMonongalia, West Virginia")
+	print(covid_trend('Monongalia','West Virginia',10))
 
 n = len(sys.argv)
 if (n != 4):
