@@ -30,4 +30,4 @@ if (n != 4):
 	sys.exit(1)
 county, state, days = sys.argv[1], sys.argv[2], int(sys.argv[3])
 covid_report = covid_trend(county, state, days)
-print('{0}, {1}\n{2}'.format(county,state,covid_report))
+print('{0}, {1}\n{2}'.format(county,state,covid_report.to_string(index=False)))
