@@ -3,8 +3,8 @@ import sys
 
 def ny_covid_trend(county,state,days):
 	all_us = pd.read_csv('https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv')
-	all_county_state = all_us[all_us['county'] == county][all_us['state'] == state]\
-		.drop(['fips','county','state'],axis=1)
+	county_state_predicate = (all_us['county'] == county) & (all_us['state'] == state)
+	all_county_state = all_us[county_state_predicate].drop(['fips','county','state'],axis=1)
 	all_county_state['new_cases'] = (all_county_state['cases'].diff().fillna(0) + 0.5).astype('int32')
 	all_county_state['new_deaths'] = (all_county_state['deaths'].diff().fillna(0) + 0.5).astype('int32')
 	return (all_county_state.tail(days))
