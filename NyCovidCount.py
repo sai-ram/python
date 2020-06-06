@@ -15,6 +15,6 @@ if (n != 4):
 	sys.exit(1)
 county, state, days = sys.argv[1], sys.argv[2], int(sys.argv[3])
 covid_report = ny_covid_trend(county, state, days+7)
-covid_report['cases_ma'] = covid_report.iloc[:,3].rolling(window=7).mean().round(2)
-covid_report['deaths_ma'] = covid_report.iloc[:,4].rolling(window=7).mean().round(2)
+covid_report['cases_ma'] = covid_report.iloc[:,3].rolling(window=7).mean().round(1)
+covid_report['deaths_ma'] = covid_report.iloc[:,4].rolling(window=7).mean().round(1)
 print('{0}, {1}\n{2}'.format(county,state,covid_report.tail(days).to_string(index=False)))
