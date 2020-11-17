@@ -2,6 +2,7 @@ import pandas as pd
 import sys
 import datetime
 from datetime import timedelta
+from datetime import datetime
 
 
 drop_fields = ['iso_code','continent','date','new_cases_smoothed','new_deaths_smoothed',
@@ -19,7 +20,7 @@ drop_fields = ['iso_code','continent','date','new_cases_smoothed','new_deaths_sm
 
 def owind_trend():
 	all_data = pd.read_csv('https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv')
-	current_time = datetime.datetime.now() - timedelta(days = 1) 
+	current_time = datetime.now() - timedelta(days = 1) 
 	yesterday = "{}-{}-{}".format(current_time.year, current_time.month, current_time.day)
 	this_friday_predicate = (all_data['date'] == yesterday)
 	this_friday_data = all_data[this_friday_predicate].drop(drop_fields,axis=1)
